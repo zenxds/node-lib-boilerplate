@@ -4,9 +4,22 @@
   "description": "node lib boilerplate",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint lib/*.js",
+    "lint": "eslint lib/**/*.js",
     "prettier": "prettier lib/**/*.js --write",
     "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "lib/**/*.{js,jsx}": [
+      "yarn lint",
+      "yarn test",
+      "yarn prettier",
+      "git add"
+    ]
   },
   "author": "zenxds",
   "repository": {
@@ -16,7 +29,9 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^5.12.0",
+    "husky": "^1.3.1",
     "jest": "^23.4.1",
+    "lint-staged": "^8.1.0",
     "prettier": "^1.15.3"
   }
 }

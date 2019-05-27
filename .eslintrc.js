@@ -1,40 +1,28 @@
 module.exports = {
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "env": {
     "browser": true,
     "node": true,
-    "commonjs": true,
     "es6": true,
     "jest": true
   },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 2017
-  },
-  "globals": {
-    "$": true
-  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "globals": {},
   "rules": {
-    "indent": [
-      "error",
+    "@typescript-eslint/indent": [
+      "warn",
       2
     ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "warn",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "never"
-    ],
-    "no-unused-vars": [
-      "warn"
-    ],
-    "no-console": [
-      "off"
-    ]
+    "@typescript-eslint/no-unused-vars": "warn"
   }
-};
+}
